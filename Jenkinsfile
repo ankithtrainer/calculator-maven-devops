@@ -29,11 +29,13 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                bat 'mvn sonar:sonar'
-            }
+       stage('SonarQube Analysis') {
+          steps {
+        withSonarQubeEnv('SonarServer') {
+            bat 'mvn clean verify sonar:sonar'
         }
+    }
+}
 
     }
 }
