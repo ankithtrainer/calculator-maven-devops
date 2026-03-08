@@ -17,19 +17,21 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
+         
+         
         }
 
         stage('Run JUnit Tests') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                sh 'mvn sonar:sonar'
+                bat 'mvn sonar:sonar'
             }
         }
 
